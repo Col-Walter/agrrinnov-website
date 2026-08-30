@@ -1,35 +1,49 @@
-name: Deploy to Cloudflare Pages
+name: 🚀 Deploy to Cloudflare Pages
 
 on:
   push:
     branches:
       - main
+  # Permet aussi de déclencher manuellement depuis l'onglet Actions de GitHub
+  workflow_dispatch:
 
 jobs:
   deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     permissions:
       contents: read
       deployments: write
+
     steps:
-      - name: Checkout
+      # 1. Récupère le code source
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      # 2. Configure Node.js 20 LTS avec cache npm
+      - name: 🟢 Setup Node.js 20
+        uses: actions/setup-node@v4
         with:
-          channel: 'stable'
+          node-version: "20"
+          cache: "npm"
 
-      - name: Build Web
-        run: |
-          flutter pub get
-          flutter build web
+      # 3. Installe les dépendances (version exacte du lock file)
+      - name: 📦 Install dependencies
+        run: npm ci
 
-      - name: Deploy to Cloudflare Pages
+      # 4. Génère l'export statique dans /out
+      - name: 🏗️ Build static export
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      # 5. Déploie le dossier /out sur Cloudflare Pages
+      - name: ☁️ Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: agrinnov-website
-          directory: build/web
+          command: pages deploy out --project-name=agrinnov-website
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

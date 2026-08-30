@@ -1,0 +1,3 @@
+# Cloudflare Pages – Redirect rules
+# Toutes les routes inconnues renvoient vers index.html (SPA fallback)
+/*    /index.html   200

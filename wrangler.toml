@@ -1,0 +1,5 @@
+name = "agrinnov-website"
+compatibility_date = "2024-09-23"
+
+[pages]
+pages_build_output_dir = "out"
