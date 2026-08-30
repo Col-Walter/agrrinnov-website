@@ -100,6 +100,11 @@ export const metadata: Metadata = {
     icon: "/images/favicon.ico",
     apple: "/images/apple-touch-icon.png",
   },
+
+  /* ── Vérification Google Search Console ────────────────────────── */
+  verification: {
+    google: "VOTRE_CODE_DE_VERIFICATION_GOOGLE", // Remplacez par le code fourni par Google Search Console si nécessaire
+  },
 };
 
 export default function RootLayout({
