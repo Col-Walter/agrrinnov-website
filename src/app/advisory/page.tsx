@@ -5,10 +5,37 @@ import ServiceHero from "@/components/ServiceHero";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollReveal from "@/components/ScrollReveal";
 
+const PAGE_URL = "https://agrinnov.tech/advisory";
+
 export const metadata: Metadata = {
-  title: "Advisory — Conseil en Agro-Management | Agrinnov",
+  title: "Advisory — Conseil Stratégique en Agro-Management",
   description:
-    "AGRINNOV Advisory accompagne les entrepreneurs agroalimentaires, PME agricoles et investisseurs dans la structuration, le pilotage stratégique et la rentabilité de leurs projets.",
+    "Agrinnov Advisory accompagne les entrepreneurs agroalimentaires et PME agricoles au Bénin : ingénierie d'affaires, pilotage stratégique, rentabilité et bancabilité de vos projets agricoles.",
+  keywords: [
+    "conseil agro-management bénin",
+    "advisory agricole",
+    "ingénierie d'affaires agricole",
+    "business plan agricole",
+    "PME agricole bénin",
+    "pilotage stratégique exploitation",
+    "investissement agricole bénin",
+  ],
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: "Advisory — Conseil en Agro-Management | Agrinnov",
+    description:
+      "Transformez votre exploitation agricole en entreprise rentable et bancable grâce au conseil Agrinnov Advisory.",
+    url: PAGE_URL,
+    type: "website",
+    locale: "fr_BJ",
+    images: [{ url: "/images/og-advisory.png", width: 1200, height: 630, alt: "Advisory — Conseil en Agro-Management" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Advisory — Conseil en Agro-Management | Agrinnov",
+    description: "Ingénierie d'affaires, pilotage stratégique et rentabilité pour vos projets agricoles au Bénin.",
+    images: ["/images/og-advisory.png"],
+  },
 };
 
 const expertise = [
@@ -29,9 +56,21 @@ const expertise = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Agrinnov Advisory",
+  description: "Conseil en agro-management, ingénierie d'affaires et pilotage stratégique pour entrepreneurs agricoles et PME au Bénin.",
+  url: PAGE_URL,
+  provider: { "@type": "Organization", name: "Agrinnov", url: "https://agrinnov.tech" },
+  areaServed: { "@type": "Country", name: "Bénin" },
+  serviceType: "Conseil en Agro-Management",
+};
+
 export default function AdvisoryPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <main className="bg-[#111111] pt-[70px]">
         <ServiceHero

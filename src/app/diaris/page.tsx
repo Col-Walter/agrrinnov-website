@@ -5,10 +5,37 @@ import ServiceHero from "@/components/ServiceHero";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollReveal from "@/components/ScrollReveal";
 
+const PAGE_URL = "https://agrinnov.tech/diaris";
+
 export const metadata: Metadata = {
-  title: "DiARIS — Agronomie de Précision | Agrinnov",
+  title: "DiARIS — Agronomie de Précision & Analyse de Sol",
   description:
-    "DiARIS est la solution d'agronomie de précision d'Agrinnov : analyse de sol NIR, diagnostics rapides et recommandations sur mesure pour régénérer vos terres agricoles.",
+    "DiARIS by Agrinnov : solution d'agronomie de précision avec analyse de sol par spectrométrie NIR, diagnostics en 72h et recommandations sur mesure pour régénérer vos terres au Bénin.",
+  keywords: [
+    "DiARIS",
+    "analyse de sol bénin",
+    "agronomie de précision",
+    "spectrométrie NIR",
+    "diagnostic sol",
+    "régénération agroécologique",
+    "agtech bénin",
+  ],
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: "DiARIS — Agronomie de Précision | Agrinnov",
+    description:
+      "Analyse de sol NIR, diagnostics rapides et recommandations sur mesure pour régénérer vos terres agricoles au Bénin.",
+    url: PAGE_URL,
+    type: "website",
+    locale: "fr_BJ",
+    images: [{ url: "/images/og-diaris.png", width: 1200, height: 630, alt: "DiARIS — Agronomie de précision" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DiARIS — Agronomie de Précision | Agrinnov",
+    description: "Analyse de sol NIR, diagnostics rapides et recommandations sur mesure.",
+    images: ["/images/og-diaris.png"],
+  },
 };
 
 const steps = [
@@ -24,9 +51,21 @@ const features = [
   { icon: "🎯", title: "Recommandations sur mesure",  desc: "Traduction directe des données complexes en conseils d'action simples, applicables par tous les producteurs." },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "DiARIS",
+  provider: { "@type": "Organization", name: "Agrinnov", url: "https://agrinnov.tech" },
+  description: "Solution d'agronomie de précision : analyse de sol par spectrométrie proche infrarouge (NIR), diagnostics en 72h et plans d'action sur mesure.",
+  url: PAGE_URL,
+  areaServed: { "@type": "Country", name: "Bénin" },
+  serviceType: "Agronomie de précision",
+};
+
 export default function DiarisPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <main className="bg-[#111111] pt-[70px]">
         {/* Hero */}

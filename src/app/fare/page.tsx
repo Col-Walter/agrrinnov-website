@@ -5,10 +5,37 @@ import ServiceHero from "@/components/ServiceHero";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollReveal from "@/components/ScrollReveal";
 
+const PAGE_URL = "https://agrinnov.tech/fare";
+
 export const metadata: Metadata = {
-  title: "Programme FARE — Formation Agropreneurs | Agrinnov",
+  title: "Programme FARE — Incubateur Agropreneurs au Bénin",
   description:
-    "Le Programme FARE d'Agrinnov est un incubateur pratique destiné aux jeunes agropreneurs : formation terrain, transfert de compétences et réseau Alumni au Bénin.",
+    "Le Programme FARE d'Agrinnov forme et accompagne les jeunes agropreneurs au Bénin : immersion terrain, transfert de fiches techniques, réseau Alumni et accompagnement à la réussite entrepreneuriale.",
+  keywords: [
+    "FARE agropreneurs",
+    "formation agricole bénin",
+    "incubateur agricole",
+    "entrepreneur agricole",
+    "jeunes agriculteurs bénin",
+    "formation terrain agriculture",
+    "réseau alumni agro",
+  ],
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: "Programme FARE — Incubateur Agropreneurs | Agrinnov",
+    description:
+      "Formez-vous sur le terrain et lancez votre exploitation agricole avec le Programme FARE d'Agrinnov au Bénin.",
+    url: PAGE_URL,
+    type: "website",
+    locale: "fr_BJ",
+    images: [{ url: "/images/og-fare.png", width: 1200, height: 630, alt: "Programme FARE — Incubateur Agropreneurs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Programme FARE — Incubateur Agropreneurs | Agrinnov",
+    description: "Formation terrain, transfert de compétences et réseau Alumni pour agropreneurs au Bénin.",
+    images: ["/images/og-fare.png"],
+  },
 };
 
 const pillars = [
@@ -29,9 +56,20 @@ const pillars = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Programme FARE — Agrinnov",
+  description: "Incubateur pratique pour jeunes agropreneurs au Bénin : formation terrain, transfert de fiches techniques et réseau Alumni.",
+  url: PAGE_URL,
+  provider: { "@type": "Organization", name: "Agrinnov", url: "https://agrinnov.tech" },
+  areaServed: { "@type": "Country", name: "Bénin" },
+};
+
 export default function FarePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <main className="bg-[#111111] pt-[70px]">
         <ServiceHero
