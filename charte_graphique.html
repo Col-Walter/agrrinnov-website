@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Charte Graphique — Agrinnov</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Outfit', sans-serif; background: #f5f5f5; color: #111; }
+  .cover { background: #111111; color: #fff; padding: 80px 60px; min-height: 300px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .cover h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 56px; font-weight: 800; letter-spacing: -2px; }
+  .cover h1 span { color: #1FA34A; }
+  .cover p { font-size: 18px; color: #aaa; margin-top: 12px; }
+  .cover .badge { display: inline-block; background: #1FA34A; color: #fff; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 2px; text-transform: uppercase; }
+  .page { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+  h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #111; }
+  h2::after { content: ''; display: block; width: 40px; height: 4px; background: #1FA34A; border-radius: 2px; margin-top: 8px; margin-bottom: 28px; }
+  h3 { font-size: 14px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  section { margin-bottom: 60px; }
+  /* Colors */
+  .colors { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+  .color-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .color-swatch { height: 90px; }
+  .color-info { padding: 10px 12px; background: #fff; }
+  .color-info .name { font-weight: 600; font-size: 13px; }
+  .color-info .hex { font-size: 12px; color: #888; font-family: monospace; }
+  .color-info .role { font-size: 11px; color: #aaa; margin-top: 2px; }
+  /* Typography */
+  .type-sample { background: #111; color: #fff; border-radius: 12px; padding: 32px; margin-bottom: 16px; }
+  .type-table { width: 100%; border-collapse: collapse; }
+  .type-table th, .type-table td { text-align: left; padding: 12px 16px; border-bottom: 1px solid #e8e8e8; font-size: 14px; }
+  .type-table th { background: #f5f5f5; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+  /* Gradients */
+  .gradients { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .gradient-card { height: 100px; border-radius: 12px; display: flex; align-items: flex-end; padding: 12px 16px; color: #fff; font-weight: 600; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  /* Spacing */
+  .spacing-items { display: flex; flex-direction: column; gap: 12px; }
+  .spacing-item { display: flex; align-items: center; gap: 16px; }
+  .spacing-bar { background: #1FA34A; border-radius: 4px; height: 20px; }
+  .spacing-label { font-size: 13px; width: 120px; font-weight: 600; }
+  .spacing-value { font-size: 13px; color: #888; font-family: monospace; }
+  /* Radius */
+  .radius-items { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-end; }
+  .radius-item { text-align: center; }
+  .radius-box { background: #1FA34A; width: 80px; height: 80px; margin: 0 auto 8px; }
+  .radius-label { font-size: 12px; font-weight: 600; }
+  .radius-value { font-size: 11px; color: #888; font-family: monospace; }
+  /* Breakpoints */
+  .bp-table { width: 100%; border-collapse: collapse; }
+  .bp-table th, .bp-table td { text-align: left; padding: 12px 16px; border-bottom: 1px solid #e8e8e8; font-size: 14px; }
+  .bp-table th { background: #f5f5f5; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .service-card { border-radius: 12px; padding: 24px; color: #fff; }
+  .service-card h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+  .service-card p { font-size: 13px; opacity: 0.8; line-height: 1.5; }
+  /* Footer */
+  .doc-footer { background: #111; color: #555; text-align: center; padding: 32px; font-size: 13px; margin-top: 60px; }
+  .doc-footer span { color: #1FA34A; }
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .color-swatch, .gradient-card, .service-card, .type-sample, .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @page { margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">Charte Graphique</div>
+  <h1>agri<span>nnov</span></h1>
+  <p>Identité visuelle du site web — Version 1.0 — 2026</p>
+</div>
+
+<div class="page">
+
+  <!-- SECTION 1: COULEURS -->
+  <section>
+    <h2>Palette de Couleurs</h2>
+
+    <h3>Couleurs primaires</h3>
+    <div class="colors">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#1FA34A;"></div>
+        <div class="color-info"><div class="name">Vert</div><div class="hex">#1FA34A</div><div class="role">Couleur principale</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#27C55B;"></div>
+        <div class="color-info"><div class="name">Vert Clair</div><div class="hex">#27C55B</div><div class="role">Variante hover</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#157A35;"></div>
+        <div class="color-info"><div class="name">Vert Foncé</div><div class="hex">#157A35</div><div class="role">Variante sombre</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FF6A00;"></div>
+        <div class="color-info"><div class="name">Orange</div><div class="hex">#FF6A00</div><div class="role">Couleur secondaire</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FF8534;"></div>
+        <div class="color-info"><div class="name">Orange Clair</div><div class="hex">#FF8534</div><div class="role">Variante hover</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FFC107;"></div>
+        <div class="color-info"><div class="name">Jaune</div><div class="hex">#FFC107</div><div class="role">Couleur tertiaire</div></div>
+      </div>
+    </div>
+
+    <br>
+    <h3>Couleurs neutres</h3>
+    <div class="colors">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#111111; border:1px solid #ddd;"></div>
+        <div class="color-info"><div class="name">Noir</div><div class="hex">#111111</div><div class="role">Fond principal</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#1A1A1A; border:1px solid #ddd;"></div>
+        <div class="color-info"><div class="name">Surface</div><div class="hex">#1A1A1A</div><div class="role">Cartes / sections</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#242424; border:1px solid #ddd;"></div>
+        <div class="color-info"><div class="name">Surface Clair</div><div class="hex">#242424</div><div class="role">Éléments surélevés</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#2E2E2E; border:1px solid #ddd;"></div>
+        <div class="color-info"><div class="name">Bordure</div><div class="hex">#2E2E2E</div><div class="role">Séparateurs</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#8A8A8A;"></div>
+        <div class="color-info"><div class="name">Gris</div><div class="hex">#8A8A8A</div><div class="role">Texte secondaire</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FFFFFF; border:1px solid #ddd;"></div>
+        <div class="color-info"><div class="name">Blanc</div><div class="hex">#FFFFFF</div><div class="role">Texte principal</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: GRADIENTS -->
+  <section>
+    <h2>Dégradés</h2>
+    <div class="gradients">
+      <div class="gradient-card" style="background: linear-gradient(135deg, #1FA34A, #27C55B);">Vert — Principal</div>
+      <div class="gradient-card" style="background: linear-gradient(135deg, #FF6A00, #FF8534);">Orange — Secondaire</div>
+      <div class="gradient-card" style="background: linear-gradient(135deg, #FFC107, #FFD54F); color:#111;">Jaune — Tertiaire</div>
+      <div class="gradient-card" style="background: linear-gradient(180deg, #111111, #1A1A1A);">Sombre — Fond</div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TYPOGRAPHIE -->
+  <section>
+    <h2>Typographie</h2>
+
+    <div class="type-sample">
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:48px; font-weight:800; letter-spacing:-2px; line-height:1.1;">Plus Jakarta Sans</div>
+      <div style="font-family:'Outfit',sans-serif; font-size:18px; color:#aaa; margin-top:8px;">Outfit — Pour les textes courants</div>
+    </div>
+
+    <table class="type-table">
+      <thead>
+        <tr><th>Style</th><th>Police</th><th>Taille</th><th>Graisse</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Display Large</td><td>Plus Jakarta Sans</td><td>72px</td><td>800</td><td>Héros principal</td></tr>
+        <tr><td>Display Medium</td><td>Plus Jakarta Sans</td><td>52px</td><td>700</td><td>Titres de section</td></tr>
+        <tr><td>Display Small</td><td>Plus Jakarta Sans</td><td>38px</td><td>700</td><td>Sous-sections</td></tr>
+        <tr><td>Headline Large</td><td>Plus Jakarta Sans</td><td>28px</td><td>700</td><td>Titres de carte</td></tr>
+        <tr><td>Headline Medium</td><td>Plus Jakarta Sans</td><td>22px</td><td>600</td><td>Sous-titres</td></tr>
+        <tr><td>Body Large</td><td>Outfit</td><td>18px</td><td>400</td><td>Corps de texte principal</td></tr>
+        <tr><td>Body Medium</td><td>Outfit</td><td>16px</td><td>400</td><td>Corps de texte secondaire</td></tr>
+        <tr><td>Body Small</td><td>Outfit</td><td>14px</td><td>400</td><td>Notes, légendes</td></tr>
+        <tr><td>Label Large</td><td>Plus Jakarta Sans</td><td>14px</td><td>600</td><td>Boutons, étiquettes</td></tr>
+        <tr><td>Label Medium</td><td>Plus Jakarta Sans</td><td>12px</td><td>600</td><td>Badges, tags</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 4: ESPACEMENTS -->
+  <section>
+    <h2>Espacements</h2>
+    <div class="spacing-items">
+      <div class="spacing-item"><div class="spacing-label">XS</div><div class="spacing-bar" style="width:8px;"></div><div class="spacing-value">8px</div></div>
+      <div class="spacing-item"><div class="spacing-label">S</div><div class="spacing-bar" style="width:16px;"></div><div class="spacing-value">16px</div></div>
+      <div class="spacing-item"><div class="spacing-label">M</div><div class="spacing-bar" style="width:24px;"></div><div class="spacing-value">24px</div></div>
+      <div class="spacing-item"><div class="spacing-label">L</div><div class="spacing-bar" style="width:48px;"></div><div class="spacing-value">48px</div></div>
+      <div class="spacing-item"><div class="spacing-label">XL</div><div class="spacing-bar" style="width:80px;"></div><div class="spacing-value">80px</div></div>
+      <div class="spacing-item"><div class="spacing-label">XXL</div><div class="spacing-bar" style="width:120px;"></div><div class="spacing-value">120px</div></div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: BORDURES -->
+  <section>
+    <h2>Rayons de Bordure</h2>
+    <div class="radius-items">
+      <div class="radius-item"><div class="radius-box" style="border-radius:8px;"></div><div class="radius-label">S</div><div class="radius-value">8px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:16px;"></div><div class="radius-label">M</div><div class="radius-value">16px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:24px;"></div><div class="radius-label">L</div><div class="radius-value">24px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:40px;"></div><div class="radius-label">XL</div><div class="radius-value">40px</div></div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: RESPONSIVE -->
+  <section>
+    <h2>Points de Rupture Responsive</h2>
+    <table class="bp-table">
+      <thead>
+        <tr><th>Appareil</th><th>Breakpoint</th><th>Padding Section</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>📱 Mobile</td><td>&lt; 768px</td><td>24px</td></tr>
+        <tr><td>📟 Tablette</td><td>768px – 1024px</td><td>48px</td></tr>
+        <tr><td>🖥️ Desktop</td><td>&gt;= 1024px</td><td>80px</td></tr>
+        <tr><td>🖥️ Large Desktop</td><td>&gt; 1440px (max-width: 1280px)</td><td>80px</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 7: SERVICES -->
+  <section>
+    <h2>Services &amp; Identité</h2>
+    <div class="services">
+      <div class="service-card" style="background: linear-gradient(135deg,#1FA34A,#27C55B);">
+        <h4>DiARIS</h4>
+        <p>Diagnostic Agro-pédologique Rationnel et Intégré des Sols</p>
+      </div>
+      <div class="service-card" style="background: linear-gradient(135deg,#FF6A00,#FF8534);">
+        <h4>FARE</h4>
+        <p>Formation en Agripreneuriat et Renforcement de l'Entrepreneuriat</p>
+      </div>
+      <div class="service-card" style="background: linear-gradient(135deg,#157A35,#1FA34A);">
+        <h4>Conseil</h4>
+        <p>Acquisition Client &amp; Accompagnement Stratégique</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: CONCEPT VISUEL -->
+  <section>
+    <h2>Concept Visuel</h2>
+    <table class="type-table">
+      <thead><tr><th>Élément</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>🪐 Orbite (Logo Icône)</td><td>Représente le concept "nucleus" : Agrinnov comme centre rayonnant</td></tr>
+        <tr><td>✨ Particules animées</td><td>Fond dynamique hero section — évoque la vie, la croissance</td></tr>
+        <tr><td>🌑 Dark Mode exclusif</td><td>Fond #111111 — professionnalisme, modernité, tech</td></tr>
+        <tr><td>🌿 Vert dominant</td><td>Agriculture, nature, croissance, espoir</td></tr>
+        <tr><td>🔶 Orange accent</td><td>Énergie, innovation, chaleur africaine</td></tr>
+        <tr><td>💛 Jaune accent</td><td>Soleil, richesse, optimisme</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<div class="doc-footer">
+  Charte Graphique <span>Agrinnov</span> — Document confidentiel © 2026 — Tous droits réservés
+</div>
+
+</body>
+</html>
