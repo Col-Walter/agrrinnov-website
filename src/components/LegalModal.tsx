@@ -1,110 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-interface Tab {
-  label: string;
-  sections: Section[];
-}
-
-interface Section {
-  title: string;
-  paragraphs: string[];
-}
-
-const legalSections: Section[] = [
-  {
-    title: "1. MENTIONS LÉGALES",
-    paragraphs: [],
-  },
-  {
-    title: "1.1 Éditeur du site",
-    paragraphs: [
-      "Le présent site web est édité par :",
-      "• Raison sociale / Nom commercial : AGRINNOV",
-      "• Forme juridique : Établissement (ETS)",
-      "• Siège social : Godomey, Tankpè, Commune d'Abomey-Calavi, Bénin",
-      "• Immatriculation : RCCM sous le numéro RB/ABC/21 A 32227 (Cotonou)",
-      "• Directeur de la publication : M. Gbetigan C. W. DATONGNON, Gérant.",
-    ],
-  },
-  {
-    title: "1.2 Contact",
-    paragraphs: [
-      "• Par e-mail : contact@agrinnov.tech",
-      "• Par téléphone : +229 01 40 79 37 31",
-    ],
-  },
-  {
-    title: "1.3 Hébergement",
-    paragraphs: [
-      "Le site est hébergé par Cloudflare, Inc.",
-      "• Site web de l'hébergeur : https://cloudflare.com",
-    ],
-  },
-  {
-    title: "2. CONDITIONS GÉNÉRALES D'UTILISATION",
-    paragraphs: [],
-  },
-  {
-    title: "2.1 Propriété intellectuelle",
-    paragraphs: [
-      "L'ensemble des contenus présents sur le site d'AGRINNOV (textes, graphismes, logos, images, vidéos, icônes, marque AGRINNOV, ainsi que les concepts liés aux services FARE, DiARIS et AGRINNOV Advisory) est la propriété exclusive d'AGRINNOV ou de ses partenaires, et est protégé par les lois relatives à la propriété intellectuelle.",
-      "Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site est interdite sans autorisation écrite préalable d'AGRINNOV.",
-    ],
-  },
-  {
-    title: "2.2 Modalités de Paiement",
-    paragraphs: [
-      "Le site propose la souscription et le paiement en ligne de services (via des passerelles sécurisées par Mobile Money). AGRINNOV ne conserve pas directement les données financières sensibles des utilisateurs.",
-    ],
-  },
-];
-
-const privacySections: Section[] = [
-  {
-    title: "3. POLITIQUE DE CONFIDENTIALITÉ",
-    paragraphs: [
-      "Conformément à la réglementation sur la protection des données personnelles (Code du Numérique du Bénin et standards internationaux), AGRINNOV s'engage à préserver la confidentialité des données collectées.",
-    ],
-  },
-  {
-    title: "3.1 Données collectées",
-    paragraphs: [
-      "Nous collectons des informations personnelles via nos formulaires de contact, d'inscription et de commande :",
-      "• Identité : Nom, prénom, e-mail, téléphone.",
-      "• Informations professionnelles : Nom de l'entreprise/ferme, localisation, spéculations cultivées.",
-    ],
-  },
-  {
-    title: "3.2 Finalité de la collecte",
-    paragraphs: [
-      "• Traiter vos demandes de renseignements, devis ou inscriptions.",
-      "• Exécuter nos services (Analyses DiARIS, Formations FARE, Accompagnement Conseil).",
-      "• Assurer la gestion de la relation client, la facturation et le suivi.",
-    ],
-  },
-  {
-    title: "3.3 Utilisation des Cookies",
-    paragraphs: [
-      "• Google Analytics : Analyse statistique de la fréquentation et de l'utilisation du site web.",
-      "• Facebook Pixel : Mesure de l'efficacité des campagnes publicitaires.",
-      "Vous pouvez configurer votre navigateur pour refuser tout ou partie des cookies.",
-    ],
-  },
-  {
-    title: "3.4 Vos Droits",
-    paragraphs: [
-      "Vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression des données vous concernant.",
-      "Pour exercer ce droit, contactez-nous à : contact@agrinnov.tech.",
-    ],
-  },
-];
-
-const tabs: Tab[] = [
-  { label: "Mentions légales & CGU", sections: legalSections },
-  { label: "Politique de confidentialité", sections: privacySections },
-];
+import Link from "next/link";
+import { legalTabs } from "@/data/legalContent";
 
 interface LegalModalProps {
   initialTab?: number;
@@ -113,40 +11,92 @@ interface LegalModalProps {
 
 export default function LegalModal({ initialTab = 0, onClose }: LegalModalProps) {
   const [activeTab, setActiveTab] = useState(initialTab);
+  const [copied, setCopied] = useState(false);
+
+  const currentTab = legalTabs[activeTab] || legalTabs[0];
+  const pageUrl = `https://agrinnov.tech${currentTab.slug}`;
+
+  const handleCopyLink = async () => {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(pageUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      }
+    } catch {
+      // Fallback
+      setCopied(false);
+    }
+  };
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12"
-      style={{ background: "rgba(0,0,0,0.87)" }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 animate-fade-in"
+      style={{ background: "rgba(0,0,0,0.88)", backdropFilter: "blur(6px)" }}
       onClick={onClose}
     >
       <div
-        className="w-full max-w-[860px] max-h-[780px] flex flex-col rounded-3xl border border-[#2E2E2E] overflow-hidden"
+        className="w-full max-w-[880px] max-h-[85vh] flex flex-col rounded-3xl border border-[#2E2E2E] overflow-hidden shadow-2xl"
         style={{ background: "#111111" }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-7 pt-6 pb-0 border-b border-[#2E2E2E]">
-          <div className="flex items-center justify-between mb-4">
-            <h2
-              className="font-[family-name:var(--font-jakarta)] font-bold text-xl text-white"
-            >
-              Informations légales
-            </h2>
-            <button
-              onClick={onClose}
-              className="text-[#8A8A8A] hover:text-white transition-colors text-2xl leading-none w-8 h-8 flex items-center justify-center"
-            >
-              ×
-            </button>
-          </div>
-          {/* Tabs */}
-          <div className="flex gap-6">
-            {tabs.map((tab, i) => (
+        <div className="px-6 md:px-8 pt-6 pb-0 border-b border-[#2E2E2E] bg-[#141414]">
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#1FA34A]" />
+              <h2 className="font-[family-name:var(--font-jakarta)] font-bold text-lg md:text-xl text-white">
+                Informations légales & Conformité
+              </h2>
+            </div>
+            
+            <div className="flex items-center gap-2">
+              {/* Copy link button */}
               <button
-                key={i}
-                onClick={() => setActiveTab(i)}
-                className="pb-3 text-sm font-[family-name:var(--font-jakarta)] font-semibold transition-colors duration-200 border-b-2"
+                onClick={handleCopyLink}
+                title="Copier le lien direct de cette page pour la partager"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-[family-name:var(--font-jakarta)] font-medium transition-all duration-200"
+                style={{
+                  background: copied ? "rgba(31,163,74,0.2)" : "#1E1E1E",
+                  border: `1px solid ${copied ? "#1FA34A" : "#333333"}`,
+                  color: copied ? "#27C55B" : "#CCCCCC",
+                }}
+              >
+                <span>{copied ? "✓ Lien copié !" : "🔗 Copier le lien"}</span>
+              </button>
+
+              {/* Open page standalone */}
+              <Link
+                href={currentTab.slug}
+                onClick={onClose}
+                title="Ouvrir la page dédiée"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-[family-name:var(--font-jakarta)] text-[#8A8A8A] hover:text-white bg-[#1E1E1E] hover:bg-[#282828] border border-[#333333] transition-colors"
+              >
+                <span>Ouvrir la page</span>
+                <span className="text-xs">↗</span>
+              </Link>
+
+              {/* Close button */}
+              <button
+                onClick={onClose}
+                aria-label="Fermer"
+                className="text-[#8A8A8A] hover:text-white transition-colors text-2xl leading-none w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#222222]"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex gap-6 overflow-x-auto">
+            {legalTabs.map((tab, i) => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveTab(i);
+                  setCopied(false);
+                }}
+                className="pb-3 text-sm font-[family-name:var(--font-jakarta)] font-semibold transition-colors duration-200 border-b-2 whitespace-nowrap cursor-pointer"
                 style={{
                   color: activeTab === i ? "#1FA34A" : "#8A8A8A",
                   borderColor: activeTab === i ? "#1FA34A" : "transparent",
@@ -159,9 +109,9 @@ export default function LegalModal({ initialTab = 0, onClose }: LegalModalProps)
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto flex-1 p-7">
-          {tabs[activeTab].sections.map((section, i) => (
-            <div key={i} className="mb-7">
+        <div className="overflow-y-auto flex-1 p-6 md:p-8">
+          {legalTabs[activeTab].sections.map((section, i) => (
+            <div key={i} className="mb-6 last:mb-0">
               {section.title && (
                 <h3 className="text-[#1FA34A] font-[family-name:var(--font-jakarta)] font-semibold text-base mb-2">
                   {section.title}
@@ -174,6 +124,22 @@ export default function LegalModal({ initialTab = 0, onClose }: LegalModalProps)
               ))}
             </div>
           ))}
+        </div>
+
+        {/* Footer info bar inside modal */}
+        <div className="px-6 md:px-8 py-3.5 border-t border-[#2E2E2E] bg-[#141414] flex flex-wrap items-center justify-between gap-3 text-xs text-[#8A8A8A]">
+          <div className="flex items-center gap-2">
+            <span>Lien public partageable :</span>
+            <code className="text-[#27C55B] bg-[#0A0A0A] px-2 py-0.5 rounded border border-[#2E2E2E] text-[11px]">
+              {pageUrl}
+            </code>
+          </div>
+          <button
+            onClick={handleCopyLink}
+            className="text-xs text-[#1FA34A] hover:underline font-semibold cursor-pointer"
+          >
+            {copied ? "Lien copié dans le presse-papier !" : "Copier ce lien pour l'envoyer"}
+          </button>
         </div>
       </div>
     </div>

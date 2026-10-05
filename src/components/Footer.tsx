@@ -144,18 +144,28 @@ export default function Footer() {
               © {new Date().getFullYear()} Agrinnov. Tous droits réservés.
             </p>
             <div className="flex items-center gap-4">
-              <button
-                onClick={() => setLegalOpen(true)}
-                className="text-xs text-[#8A8A8A] hover:text-[#1FA34A] transition-colors"
+              <a
+                href="/mentions-legales"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setLegalOpen(true);
+                }}
+                className="text-xs text-[#8A8A8A] hover:text-[#1FA34A] transition-colors cursor-pointer"
+                title="Consulter les mentions légales"
               >
                 Mentions légales
-              </button>
-              <button
-                onClick={() => setPrivacyOpen(true)}
-                className="text-xs text-[#8A8A8A] hover:text-[#1FA34A] transition-colors"
+              </a>
+              <a
+                href="/politique-de-confidentialite"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPrivacyOpen(true);
+                }}
+                className="text-xs text-[#8A8A8A] hover:text-[#1FA34A] transition-colors cursor-pointer"
+                title="Consulter la politique de confidentialité"
               >
                 Confidentialité
-              </button>
+              </a>
               <a
                 href="mailto:contact@agrinnov.tech"
                 className="text-xs text-[#8A8A8A] hover:text-[#1FA34A] transition-colors"

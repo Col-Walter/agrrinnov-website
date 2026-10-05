@@ -34,4 +34,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://agrinnov.tech/advisory/"/>
   </url>
 
+  <url>
+    <loc>https://agrinnov.tech/politique-de-confidentialite/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://agrinnov.tech/politique-de-confidentialite/"/>
+  </url>
+
+  <url>
+    <loc>https://agrinnov.tech/mentions-legales/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://agrinnov.tech/mentions-legales/"/>
+  </url>
+
 </urlset>
